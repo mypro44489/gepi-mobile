@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .*\.(gif|jpg|png)$ http://www.tofhoster.eu/images/defaut.png [NC]

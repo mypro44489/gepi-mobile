@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .*\.(gif|jpg|png)$ http://localhost/sonli-api/api/web/uploads/default.jpg [NC]
