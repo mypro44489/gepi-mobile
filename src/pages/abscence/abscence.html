@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar no-border-bottom color="otr">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Absences
+    </ion-title>
+  </ion-navbar>
+  <!-- <ion-searchbar (ionInput)="getItems($event)" placeholder="Recherche par heure"></ion-searchbar> -->
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item *ngFor="let obj of abscences">
+      <!-- <ion-icon name="person"></ion-icon>  {{ obj.DATEABSENCE }} {{ obj.HEUREPERIODE }} - absent
+      <button  (click)="modifier(obj)" color="otr" ion-button outline item-end icon-start>
+        <ion-icon name="create"></ion-icon>
+      </button> 
+      <button (click)="supprConfirm(obj)" color="danger" ion-button outline item-end icon-start>
+        <ion-icon name="trash"></ion-icon>
+      </button> -->
+      <ion-icon name="person" slot="start"></ion-icon>
+      {{obj.nom}} {{obj.prenoms}}
+      <div class="item-note" slot="end">
+        abscent le {{ obj.DATEABSENCE}} <br>
+        à la {{ obj.HEUREPERIODE }}
+      </div>
+      <button *ngIf="global.accessLevel=='Administrateur' || global.accessLevel=='Professeur'" (click)="supprConfirm(obj)" color="danger" ion-button outline item-end icon-start>
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-item>
+
+  </ion-list>
+
+  <div *ngIf="abscences.length ==0" class="notrouve">
+    aucune absence!
+  </div>
+
+  <ion-fab *ngIf="global.accessLevel=='Administrateur' || global.accessLevel=='Professeur'" right bottom (tap)="ajouter()">
+    <button ion-fab color="otr">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

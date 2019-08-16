@@ -1,0 +1,46 @@
+<!--
+  Generated template for the AddContribuablePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="otr">
+    <ion-title>Enrégistrer la note</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="save()" [formGroup]="formAddNote">
+    <ion-list padding>
+      <ion-card>
+
+        <ion-card-header>
+          Eleve
+        </ion-card-header>
+
+        <ion-card-content>
+          {{ eleve.nom }} {{ eleve.prenoms }}: {{ eleve.classe }} <br>
+          Matière : {{matiere?.LIBELLEMATIERE}}
+        </ion-card-content>
+
+      </ion-card>
+     
+      <ion-item>
+        <ion-label floating>Note</ion-label>
+        <ion-input formControlName="note" [(ngModel)]="note.VALEURNOTESNOTES" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Date note</ion-label>
+        <ion-input formControlName="date" [(ngModel)]="note.DATENOTES" type="date"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <div padding>
+      <button type="submit" ion-button color="otr" block>Enregistrer</button>
+    </div>
+  </form>
+</ion-content>

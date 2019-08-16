@@ -1,0 +1,54 @@
+<!--
+  Generated template for the ChoixElevePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Choisir un élève</ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button (click)="closeModal()">x</button>
+    </ion-buttons> -->
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+
+    <ion-card-header>
+      Evève
+    </ion-card-header>
+
+    <ion-card-content>
+      {{ eleve?.nom }} {{ eleve?.prenoms }} - {{ eleve?.classe }}
+    </ion-card-content>
+
+  </ion-card>
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Recherche par Nom"></ion-searchbar>
+
+  <ion-list radio-group [(ngModel)]="relationship">
+    <ion-list-header>
+      Choisissez l'élève
+    </ion-list-header>
+
+    <ion-item *ngFor="let obj of eleves" (tap)="choix(obj)">
+      <ion-label> {{ obj?.nom }} {{ obj?.prenoms }} - {{ obj?.classe }}</ion-label>
+    
+      <ion-radio [checked]="obj==choixValue" value="{{obj.id}}" ></ion-radio>
+     
+    </ion-item>
+
+  </ion-list>
+  <div *ngIf="eleves.length ==0" class="notrouve">
+    aucun élève!
+  </div>
+
+  <ion-fab right bottom>
+    <button [disabled]="choixValue==null" (tap)="continue()" ion-fab color="otr">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

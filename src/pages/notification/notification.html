@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar no-border-bottom color="otr">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Notifications
+    </ion-title>
+  </ion-navbar>
+  <!-- <ion-searchbar (ionInput)="getItems($event)" placeholder="Recherche par heure"></ion-searchbar> -->
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item *ngFor="let obj of notifications">
+      <div (tap)="detail(obj)">
+          <ion-icon name="notifications" slot="start"></ion-icon>
+          {{obj.contenu}}
+      </div>
+    
+     
+      <button *ngIf="global.accessLevel=='Administrateur'" (click)="supprConfirm(obj)" color="danger" ion-button outline item-end icon-start>
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-item>
+
+  </ion-list>
+
+  <div *ngIf="notifications.length ==0" class="notrouve">
+    aucune notifications!
+  </div>
+
+  <ion-fab *ngIf="global.accessLevel=='Administrateur'" right bottom (tap)="ajouter()">
+    <button ion-fab color="otr">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

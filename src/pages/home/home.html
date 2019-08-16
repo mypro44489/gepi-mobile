@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar color="otr">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ global.accessLevel }} </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col col-12>
+      <ion-card (tap)="openPage(0)">
+        <ion-card-content>
+          Abscences
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-12>
+      <ion-card (tap)="openPage(1)">
+        <ion-card-content>
+          Retards
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-12>
+      <ion-card (tap)="openPage(2)">
+        <ion-card-content>
+          Notes
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-12 *ngIf="global.accessLevel=='Administrateur' || global.accessLevel=='Parent'">
+      <ion-card (tap)="openPage(3)">
+        <ion-card-content>
+          Notifications
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-grid *ngIf="global.accessLevel=='Administrateur'">
+    <ion-row>
+      <ion-col col-12>
+        <ion-card (tap)="openPage(7)">
+          <ion-card-content>
+            Abscences
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12>
+        <ion-card (tap)="openPage(4)">
+          <ion-card-content>
+            Notifications
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="global.accessLevel=='Parent' || global.accessLevel=='Professeur'">
+    <ion-row>
+      <ion-col col-12>
+        <ion-card (tap)="openPage(7)">
+          <ion-card-content>
+            Abscences
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid> -->
+
+</ion-content>

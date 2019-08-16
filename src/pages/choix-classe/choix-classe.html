@@ -1,0 +1,54 @@
+<!--
+  Generated template for the ChoixElevePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Choisir une clase</ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button (click)="closeModal()">x</button>
+    </ion-buttons> -->
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+
+    <ion-card-header>
+      Classe
+    </ion-card-header>
+
+    <ion-card-content>
+      {{ classe?.LIBELLECLASSE }}
+    </ion-card-content>
+
+  </ion-card>
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Recherche par Nom"></ion-searchbar>
+
+  <ion-list radio-group [(ngModel)]="relationship">
+    <ion-list-header>
+      Choisissez la classe
+    </ion-list-header>
+
+    <ion-item *ngFor="let obj of classes" (tap)="choix(obj)">
+      <ion-label> {{ obj?.LIBELLECLASSE }}</ion-label>
+    
+      <ion-radio [checked]="obj==choixValue" value="{{obj.ID}}" ></ion-radio>
+     
+    </ion-item>
+
+  </ion-list>
+  <div *ngIf="classes.length ==0" class="notrouve">
+    aucune classe!
+  </div>
+
+  <ion-fab right bottom>
+    <button [disabled]="choixValue==null" (tap)="continue()" ion-fab color="otr">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,30 @@
+<!--
+  Generated template for the AddContribuablePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="otr">
+      <ion-title>Envoyé une notification</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <form (ngSubmit)="save()" [formGroup]="formAddNotification">
+      <ion-list >
+          
+        <ion-item>
+          <ion-textarea class="champ" formControlName="contenu" [(ngModel)]="notification.contenu" rows="6" cols="20" placeholder="Contenu"></ion-textarea>
+        </ion-item>
+       
+  
+      </ion-list>
+      <div padding>
+        <button type="submit" ion-button color="otr" block> <ion-icon name="send"></ion-icon> Envoyé</button>
+      </div>
+    </form>
+  </ion-content>
