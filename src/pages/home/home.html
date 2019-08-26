@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content>
+  <div class="alert alert-infos" *ngIf="global.eleve!==null" padding>
+    {{ global.eleve?.nom }} {{ global.eleve?.prenoms }}
+  </div>
   <ion-row>
     <ion-col col-12>
       <ion-card (tap)="openPage(0)">
@@ -38,35 +41,15 @@
       </ion-card>
     </ion-col>
   </ion-row>
-  <!-- <ion-grid *ngIf="global.accessLevel=='Administrateur'">
-    <ion-row>
-      <ion-col col-12>
-        <ion-card (tap)="openPage(7)">
-          <ion-card-content>
-            Abscences
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col col-12>
-        <ion-card (tap)="openPage(4)">
-          <ion-card-content>
-            Notifications
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-grid *ngIf="global.accessLevel=='Parent' || global.accessLevel=='Professeur'">
-    <ion-row>
-      <ion-col col-12>
-        <ion-card (tap)="openPage(7)">
-          <ion-card-content>
-            Abscences
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+  <ion-row *ngIf="global.accessLevel=='Administrateur'">
+    <ion-col col-12>
+      <ion-card (tap)="openPage(4)">
+        <ion-card-content>
+          Emploi du temps
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
 
-  </ion-grid> -->
+  </ion-row>
 
 </ion-content>

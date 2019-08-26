@@ -1,82 +1,37 @@
-<!--
-  Generated template for the EmploiedutempsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<!-- <ion-header>
-  <ion-navbar>
-    <ion-title>Emploi du temps</ion-title>
+<ion-header>
+  <ion-navbar no-border-bottom color="otr">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Emploi du temps
+    </ion-title>
   </ion-navbar>
+  <!-- <ion-searchbar (ionInput)="getItems($event)" placeholder="Recherche par heure"></ion-searchbar> -->
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-list>
-    <ion-item *ngFor="let obj of emploidudtemps">
-     
-      <button (click)="modifier(obj)" color="otr" ion-button outline item-end icon-start>
-        <ion-icon name="create"></ion-icon>
-      </button>
-      <button (click)="supprConfirm(obj)" color="danger" ion-button outline item-end icon-start>
-        <ion-icon name="trash"></ion-icon>
-      </button>
+    <ion-item *ngFor="let obj of classes" (click)="gotoview(obj)">
+      <ion-avatar item-start>
+        <ion-icon name="albums"  slot="start"></ion-icon>
+      </ion-avatar>
+      <h2>{{obj.LIBELLECLASSE}} </h2>
+      <p></p>
     </ion-item>
 
   </ion-list>
 
-  <div *ngIf="contribuables.length ==0" class="notrouve">
-    <ion-icon name="people" class="iconmap"></ion-icon> <br> aucun contribuable
+  <div *ngIf="classes.length ==0" class="notrouve">
+    aucune classe retrouvé !
   </div>
 
-  <ion-fab right bottom (tap)="ajouter()">
+  <!-- <ion-fab *ngIf="global.accessLevel=='Administrateur'" right bottom (tap)="ajouter()">
     <button ion-fab color="otr">
       <ion-icon name="add"></ion-icon>
     </button>
-  </ion-fab>
-</ion-content> -->
-<!--
-  Generated template for the PupilsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-    <ion-navbar color="otr">
-      <ion-title>Emploi du temps</ion-title>
-    </ion-navbar>
-    <ion-toolbar>
-      <ion-searchbar showCancelButton autocomplete="on" color="danger" (ionInput)="filterPupils($event)" placeholder="Filter emploidudtemps"></ion-searchbar>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content padding>
-    <ion-list>
-      <ion-item-sliding  *ngFor="let obj of emploidutemps" #item>
-        <ion-item>
-          <!-- <ion-avatar item-left>
-            <img src="{{ global.serverAddress }}avatars/{{ obj.fldobjid }}.jpg">
-          </ion-avatar> -->
-          <!-- <h2>{{ obj.fldfirstname }} {{ obj.fldsurname }} ({{ obj.fldobjid }})</h2>-->
-          <p>({{ obj.LIBELLECLASSE }})</p> 
-        </ion-item>
-        <ion-item-options>
-          <button ion-button *ngIf="global.session.profil=='Administrator'" color="danger" (click)="delete(item,obj.ID)">
-            <ion-icon name="close"></ion-icon>
-            Supprimer
-          </button>
-          <button ion-button color="dark" (click)="profile(item,obj.ID)">
-            <ion-icon name="contact"></ion-icon>
-            Détail
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-list>
-    <ion-fab right bottom>
-      <button ion-fab (click)="showAddEmploidutemps()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-fab>
-  </ion-content>
-  
+  </ion-fab> -->
+</ion-content>

@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class GlobalProvider {
 	session:any;
+	eleve:any=null;
 	serverAddress:string;
 	accessLevel=null;
 

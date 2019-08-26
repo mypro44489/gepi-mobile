@@ -11,5 +11,37 @@
 </ion-header>
 
 <ion-content padding>
+  <div>
+    <table>
+
+      <thead>
+        <tr>
+          <th>#</th>
+          <th *ngFor="let jour of jours">{{jour}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>
+            <table>
+              <tr *ngFor="let heure of periodes">
+                <td class="height:"> {{heure.HEUREPERIODE}}</td>
+              </tr>
+            </table>
+          </th>
+          <td *ngFor="let jour of jours">
+            <table>
+              <tr *ngFor="let heure of periodes">
+                <td>
+                  <span>{{getMatiere(jour, heure)}} </span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
 
 </ion-content>

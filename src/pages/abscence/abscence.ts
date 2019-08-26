@@ -25,27 +25,48 @@ export class AbscencePage {
   abscences: any = [];
 
   m: string = "abscences/";
+  req: number;
   //host="http://localhost/gepi-mobile-api/api/web/v1/";
   constructor(public alertCtrl: AlertController,
     private apiProvider: ApiProvider,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public global:GlobalProvider,
+    public global: GlobalProvider,
     public toastCtrl: ToastController,
     public http: Http) {
   }
-  
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AbscencePage');
+    if (this.global.accessLevel == 'Parent' || this.global.accessLevel == 'Eleve') {
+      this.req = 2;
+    } else {
+      this.req = 1;
+    }
   }
 
-  getAbscences() {
-    this.apiProvider.getRequest2(this.m+"all").subscribe(data => {
+  getAbscences2() {
+    let p = "?eleveId=" + this.global.eleve.id;
+    this.apiProvider.getRequest2(this.m + "byeleve" + p).subscribe(data => {
       console.log(data);
       this.abscences = JSON.parse(data["_body"]);
     }, err => {
       console.log(err);
     });
+  }
+  getAbscences1() {
+    this.apiProvider.getRequest2(this.m + "all").subscribe(data => {
+      console.log(data);
+      this.abscences = JSON.parse(data["_body"]);
+    }, err => {
+      console.log(err);
+    });
+  }
+  getAbscences() {
+    if (this.req == 1) {
+      this.getAbscences1();
+    } else {
+      this.getAbscences2();
+    }
   }
 
   ionViewWillEnter() {
@@ -128,7 +149,7 @@ export class AbscencePage {
   }
 
   ajouter() {
-    this.navCtrl.push(ChoixClassePage, {"page1":ChoixElevePage, "page":AddAbscencePage});
+    this.navCtrl.push(ChoixClassePage, { "page1": ChoixElevePage, "page": AddAbscencePage });
   }
   modifier(obj) {
     console.log(obj);

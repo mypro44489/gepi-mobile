@@ -27,18 +27,28 @@ export class NotePage {
     private apiProvider: ApiProvider,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public global:GlobalProvider,
+    public global: GlobalProvider,
     public toastCtrl: ToastController,
     // http: Http
-    ) {
+  ) {
   }
-  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotePage');
   }
 
   getNotes() {
-    this.apiProvider.getRequest2(this.m+"all").subscribe(data => {
+    this.apiProvider.getRequest2(this.m + "all").subscribe(data => {
+      console.log(data);
+      this.notes = JSON.parse(data["_body"]);
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  getNotes2() {
+    let p = "?eleveId=" + this.global.eleve.id;
+    this.apiProvider.getRequest2(this.m + "byeleve" + p).subscribe(data => {
       console.log(data);
       this.notes = JSON.parse(data["_body"]);
     }, err => {
@@ -47,7 +57,11 @@ export class NotePage {
   }
 
   ionViewWillEnter() {
-    this.getNotes();
+    if (this.global.accessLevel == 'Parent' || this.global.accessLevel == 'Eleve') {
+      this.getNotes2();
+    } else {
+      this.getNotes();
+    }
   }
 
   getItems(ev) {
@@ -118,7 +132,11 @@ export class NotePage {
 
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
-    this.getNotes();
+    if (this.global.accessLevel == 'Parent' || this.global.accessLevel == 'Eleve') {
+      this.getNotes2();
+    } else {
+      this.getNotes();
+    }
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();

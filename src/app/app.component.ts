@@ -7,6 +7,7 @@ import { Storage } from '@ionic/storage';
 import { GlobalProvider } from "../providers/global/global";
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { ElevePage } from '../pages/eleve/eleve';
 //import { MyChildrenPage } from '../pages/my-children/my-children';
 //import { PupilsPage } from '../pages/pupils/pupils';
 //import { ProfilePage } from '../pages/profile/profile';
@@ -55,7 +56,15 @@ export class MyApp {
       this.rootPage = LoginPage;   
     }else{
       this.global.accessLevel=this.global.session.profil;
-      this.rootPage = HomePage;        
+      if( this.global.accessLevel=="Parent"){
+        this.rootPage = ElevePage;    
+      }else{
+        if( this.global.accessLevel=="Eleve"){
+          this.global.eleve=this.global.session;
+        }
+        this.rootPage = HomePage;
+      }
+          
     }
   }
 
@@ -69,6 +78,7 @@ export class MyApp {
     this.storage.remove("session");    
     this.global.session=null;
     this.global.accessLevel=null;
+    this.global.eleve=null;
     this.nav.setRoot(LoginPage);
   }
 

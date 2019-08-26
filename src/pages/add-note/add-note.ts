@@ -23,13 +23,14 @@ export class AddNotePage {
   m: string = 'notes/add';
   mperiode: string = 'periodes/'
   eleve: any={};
+  occasions:any = ['interrogation', 'devoir', 'examen'];
   note = {
     ID: '',
     IDELEVE: undefined,
     IDMATIERE: undefined,
     VALEURNOTESNOTES: '',
     DATENOTES: '',
-    
+    occasion:'',
   };
   matiere: any;
   constructor( public storage: Storage, public alertCtrl: AlertController, public global: GlobalProvider,
@@ -47,7 +48,7 @@ export class AddNotePage {
     };
     this.formAddNote = this.formBuilder.group({
       //  classe: ['',validators.name],
-      //  surname: ['',validators.name],
+      occasion: ['',validators.dob],
       note: ['', validators.dob],
       date: ['', validators.dob],
     });

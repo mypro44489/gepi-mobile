@@ -1,19 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-// import { ChatsPage } from '../chats/chats';
-// import { PeoplePage } from '../people/people';
 import { GlobalProvider } from '../../providers/global/global';
-import { ClassePage } from '../classe/classe';
-//import { SettingsPage } from '../settings/settings';
-import { ElevePage } from '../eleve/eleve';
-import { MatierePage } from '../matiere/matiere';
-import { PeriodePage } from '../periode/periode';
 import { NotificationPage } from '../notification/notification';
-import { EmploiedutempsPage } from '../emploiedutemps/emploiedutemps';
 import { NotePage } from '../note/note';
 import { AbscencePage } from '../abscence/abscence';
 import { RetardPage } from '../retard/retard';
-import { CahierTextPage } from '../cahier-text/cahier-text';
+import { EmploiedutempsPage } from '../emploiedutemps/emploiedutemps';
 /**
  * Generated class for the HomePage page.
  *
@@ -34,7 +26,7 @@ export class HomePage {
  
 
   openPage(index) {
-    var pages=[ AbscencePage, RetardPage, NotePage, NotificationPage];
+    var pages=[ AbscencePage, RetardPage, NotePage, NotificationPage, EmploiedutempsPage];
     this.navCtrl.push(pages[index]);
   }
   ionViewDidLoad() {

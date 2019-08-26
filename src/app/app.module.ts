@@ -37,7 +37,6 @@ import { RetardPage } from '../pages/retard/retard';
 import { CahierTextPage } from '../pages/cahier-text/cahier-text';
 import { NotificationPage } from '../pages/notification/notification';
 import {EmploiedutempsPage } from '../pages/emploiedutemps/emploiedutemps';
-import {AddEmploidutempsPage } from '../pages/add-emploidutemps/add-emploidutemps';
 import {ViewEmploidutempsPage } from '../pages/view-emploidutemps/view-emploidutemps';
 import { ApiProvider } from '../providers/api/api';
 import { HttpClientModule } from '@angular/common/http';
@@ -49,6 +48,7 @@ import { AddNotePage } from '../pages/add-note/add-note';
 import { AddRetardPage } from '../pages/add-retard/add-retard';
 import { AddNotificationPage } from '../pages/add-notification/add-notification';
 import { ViewNotificationPage } from '../pages/view-notification/view-notification';
+import { EditEmploiPage } from '../pages/edit-emploi/edit-emploi';
 @NgModule({
   declarations: [
     MyApp,
@@ -64,7 +64,7 @@ import { ViewNotificationPage } from '../pages/view-notification/view-notificati
     PeriodePage,
     NotificationPage,
     EmploiedutempsPage,
-    AddEmploidutempsPage,
+    EditEmploiPage,
     ViewEmploidutempsPage,
     NotePage,
     AbscencePage,
@@ -101,7 +101,7 @@ import { ViewNotificationPage } from '../pages/view-notification/view-notificati
     PeriodePage,
     NotificationPage,
     EmploiedutempsPage,
-    AddEmploidutempsPage,
+    EditEmploiPage,
     ViewEmploidutempsPage,
     NotePage,
     AbscencePage,

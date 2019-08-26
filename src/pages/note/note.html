@@ -26,7 +26,7 @@
       <ion-icon name="person" slot="start"></ion-icon>
       {{obj.nom}} {{obj.prenoms}}
       <div class="item-note" slot="end">
-         {{ obj.VALEURNOTESNOTES }} en {{ obj.matiere }} <br>
+          {{ obj.matiere }} ({{obj.occasion}}): {{ obj.VALEURNOTESNOTES }}  <br>
          le {{ obj.DATENOTES}} 
       </div>
       <button *ngIf="global.accessLevel=='Administrateur' || global.accessLevel=='Professeur'" (click)="supprConfirm(obj)" color="danger" ion-button outline item-end icon-start>

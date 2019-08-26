@@ -1,3 +1,10 @@
 page-view-emploidutemps {
-
+    table
+    {
+        border-collapse: collapse;
+    }
+    td, th /* Mettre une bordure sur les td ET les th */
+    {
+        border: 1px solid black;
+    }
 }

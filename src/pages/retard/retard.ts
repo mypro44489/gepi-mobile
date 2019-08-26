@@ -36,6 +36,15 @@ export class RetardPage {
     console.log('ionViewDidLoad RetardPage');
   }
 
+  getRetards2() {
+    let p = "?eleveId=" + this.global.eleve.id;
+    this.apiProvider.getRequest2(this.m + "byeleve" + p).subscribe(data => {
+      console.log(data);
+      this.retards = JSON.parse(data["_body"]);
+    }, err => {
+      console.log(err);
+    });
+  }
   getRetards() {
     this.apiProvider.getRequest2(this.m+"all").subscribe(data => {
       console.log(data);
@@ -46,7 +55,11 @@ export class RetardPage {
   }
 
   ionViewWillEnter() {
-    this.getRetards();
+    if (this.global.accessLevel == 'Parent' || this.global.accessLevel == 'Eleve') {
+      this.getRetards2();
+    } else {
+      this.getRetards();
+    }
   }
 
   getItems(ev) {
@@ -117,7 +130,11 @@ export class RetardPage {
 
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
-    this.getRetards();
+    if (this.global.accessLevel !== 'Parent' && this.global.accessLevel !== 'Eleve') {
+      this.getRetards();
+    } else {
+      this.getRetards2();
+    }
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
